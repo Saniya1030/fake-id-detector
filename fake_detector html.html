@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FakeLens - Fake Social Media Account Checker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #0b1120;
+      color: white;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #0f172a;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .logo span {
+      color: #3b82f6;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    ul li a:hover {
+      color: #facc15;
+    }
+    .buttons button {
+      margin-left: 1rem;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .login-btn {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .signup-btn {
+      background-color: #facc15;
+      color: black;
+    }
+    section {
+      padding: 100px 2rem;
+      text-align: center;
+      min-height: 100vh;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0;
+    }
+    .hero p {
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+    .hero .buttons {
+      margin-top: 2rem;
+    }
+    .hero .buttons button {
+      margin: 0 0.5rem;
+    }
+    /* Animation keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated on load */
+.animate-fade {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+/* spinner */
+.spinner {
+  margin: 1rem auto;
+  border: 6px solid #334155;
+  border-top: 6px solid #facc15;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kart-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, #38bdf8, #f472b6, #facc15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowUp 2.5s ease-in-out infinite alternate, fadeSlide 1.2s ease forwards;
+  opacity: 0;
+  margin-top: 2rem;
+}
+
+@keyframes glowUp {
+  0% {
+    text-shadow: 0 0 10px #38bdf8, 0 0 20px #0ea5e9;
+  }
+  100% {
+    text-shadow: 0 0 20px #f472b6, 0 0 30px #facc15;
+  }
+}
+
+body {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Fake<span>Lens</span></div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="buttons">
+      <button class="login-btn" onclick="document.getElementById('login').scrollIntoView()">Login</button>
+      <button class="signup-btn" onclick="document.getElementById('signup').scrollIntoView()">Signup</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <p>Protect Yourself from Scammers</p>
+    <h1>Check if a Social Media Account is <span style="color:#3b82f6;">Fake</span> or Real</h1>
+    <p>Use AI-powered tools to detect suspicious behavior and uncover fake accounts on Twitter, Instagram, and more. Stay safe and verify before you trust.</p>
+    <div class="buttons">
+      <button class="login-btn" onclick="document.getElementById('check').scrollIntoView()">Start Checking</button>
+      <button class="signup-btn" onclick="document.getElementById('how').scrollIntoView()">How It Works</button>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <!-- <section id="how">
+    <h2>How It Works</h2>
+    <p>We analyze account metadata, content, behavior, and more using AI & open APIs to assess authenticity.</p>
+  </section> -->
+  <section id="how">
+    <h2>How It Works</h2>
+    <p>FakeLens uses AI and data analysis to check social media accounts for suspicious activity. Here’s how it works:</p>
+    <ol style="text-align: left; max-width: 800px; margin: 2rem auto; font-size: 1.1rem; line-height: 1.8;">
+      <li><strong>1. Enter an Account Handle:</strong> You provide the username or profile link for Twitter, Instagram, etc.</li>
+      <li><strong>2. Data Collection:</strong> We gather public data like bio, followers/following ratio, post frequency, account age, and engagement.</li>
+      <li><strong>3. Behavior Analysis:</strong> We check patterns—suspicious following activity, repetitive posts, bot-like engagement, etc.</li>
+      <li><strong>4. AI Scoring:</strong> Our AI model analyzes the data and gives a score indicating the likelihood the account is fake or genuine.</li>
+      <li><strong>5. You Get a Verdict:</strong> You see the result—Fake, Suspicious, or Real—with a short explanation and tips.</li>
+    </ol>
+  </section>
+ 
+
+
+  <!-- About Section -->
+  <!-- 
+   -->
+   <section id="about" style="padding: 4rem 2rem; text-align: center; background-color: #0f172a; color: #f8fafc;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">About FakeLens</h2>
+    <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+      FakeLens is an AI-powered tool designed to help users verify the authenticity of social media accounts. In a world where fake accounts and scams are on the rise, our mission is to make online spaces safer and more transparent.
+      <br><br>
+      Whether you're a business verifying influencers, a parent checking online profiles, or just curious about who's behind an account — FakeLens gives you the tools to detect bots, impersonators, and spam profiles with ease.
+    </p>
+    <div style="margin-top: 2rem;">
+      <h3 style="font-size: 1.5rem;">Why FakeLens?</h3>
+      <ul style="list-style: none; padding: 0; max-width: 700px; margin: 1rem auto; font-size: 1.1rem; line-height: 1.6;">
+        <li>✅ Uses real-time data and AI to detect fake behavior</li>
+        <li>✅ Works with multiple platforms like Twitter, Instagram, etc.</li>
+        <li>✅ Simple and privacy-respecting – no login required</li>
+        <li>✅ Built for individuals, influencers, brands, and researchers</li>
+      </ul>
+    </div>
+  </section>
+  
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or feedback? Reach out via email: support@fakelens.com</p>
+  </section>
+
+  <!-- Login Section
+  <section id="login">
+    <h2>Login</h2>
+    <p>This is where your login form will go.</p>
+  </section> -->
+  <section id="login" style="padding: 4rem 2rem; background-color: #0f172a; color: #f8fafc; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Login to FakeLens</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem;">Access your dashboard to check account authenticity and track your scans.</p>
+  
+    <form style="max-width: 400px; margin: 0 auto; background-color: #1e293b; padding: 2rem; border-radius: 8px;">
+      <div style="margin-bottom: 1.2rem;">
+        <label for="email" style="display: block; margin-bottom: 0.5rem; text-align: left;">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+  
+      <div style="margin-bottom: 1.2rem;">
+        <label for="password" style="display: block; margin-bottom: 0.5rem; text-align: left;">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+  
+      <button type="submit" style="width: 100%; padding: 0.7rem; background-color: #0ea5e9; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Login
+      </button>
+    </form>
+  </section>
+  
+  <!-- Signup Section -->
+  <!-- <section id="signup">
+    <h2>Signup</h2>
+    <p>This is where your signup form will go.</p>
+  </section> -->
+  <section id="signup" style="padding: 4rem 2rem; background-color: #0f172a; color: #f8fafc; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Create an Account</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem;">Sign up to start verifying social media accounts easily and securely!</p>
+  
+    <form style="max-width: 400px; margin: 0 auto; background-color: #1e293b; padding: 2rem; border-radius: 8px;">
+      <div style="margin-bottom: 1.2rem;">
+        <label for="username" style="display: block; margin-bottom: 0.5rem; text-align: left;">Username</label>
+        <input type="text" id="username" placeholder="Choose a username" required style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+  
+      <div style="margin-bottom: 1.2rem;">
+        <label for="email-signup" style="display: block; margin-bottom: 0.5rem; text-align: left;">Email</label>
+        <input type="email" id="email-signup" placeholder="Enter your email" required style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+  
+      <div style="margin-bottom: 1.2rem;">
+        <label for="password-signup" style="display: block; margin-bottom: 0.5rem; text-align: left;">Password</label>
+        <input type="password" id="password-signup" placeholder="Create a password" required style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+  
+      <button type="submit" style="width: 100%; padding: 0.7rem; background-color: #facc15; color: #0f172a; border: none; border-radius: 5px; cursor: pointer;">
+        Sign Up
+      </button>
+    </form>
+  </section>
+  
+
+  <!-- Account Check Section -->
+  <!-- <section id="check">
+    <h2>Check a Social Media Account</h2>
+    <p>Form to enter account handle and run verification will go here.</p>
+  </section> -->
+  <section id="check" style="padding: 4rem 2rem; background-color: #0f172a; color: #f8fafc; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Check a Social Media Account</h2>
+    <p style="max-width: 600px; margin: 0 auto 2rem;">Enter a username or profile link to analyze the authenticity of the account.</p>
+  
+    <form id="checkForm" style="max-width: 500px; margin: 0 auto; background-color: #1e293b; padding: 2rem; border-radius: 8px;">
+      <div style="margin-bottom: 1.5rem;">
+        <label for="handle" style="display: block; margin-bottom: 0.5rem; text-align: left;">Social Media Username or Profile URL</label>
+        <input type="text" id="handle" placeholder="@username or profile URL" required
+               style="width: 100%; padding: 0.7rem; border: none; border-radius: 5px;">
+      </div>
+      <button type="submit"
+              style="width: 100%; padding: 0.7rem; background-color: #3b82f6; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+        Check Now
+      </button>
+    </form>
+  
+   
+  <!-- // spinerr  -->
+  
+  <div id="result" style="margin-top: 2rem; font-size: 1.2rem;"></div>
+ <!-- animation -->
+
+  <div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+ </div>
+ 
+  
+  <script>
+    document.getElementById('checkForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const handle = document.getElementById('handle').value.trim();
+      const resultDiv = document.getElementById('result');
+  
+      if (!handle) {
+        resultDiv.innerText = "Please enter a valid username or profile URL.";
+        return;
+      }
+  
+      // Simulated logic — replace with real API call
+      resultDiv.innerHTML = `<p style="color: #facc15;">Checking <strong>${handle}</strong>... Please wait ⏳</p>`;
+  
+      setTimeout(() => {
+        // Fake score (for demo purposes)
+        const isFake = Math.random() > 0.5;
+        resultDiv.innerHTML = isFake
+          ? `<p style="color: #f87171;"><strong>${handle}</strong> appears to be a <strong>Fake</strong> account 🚩</p>`
+          : `<p style="color: #4ade80;"><strong>${handle}</strong> looks <strong>Genuine</strong> ✅</p>`;
+      }, 1500);
+    });
+  </script>
+  <script>
+    // Reveal on scroll
+    window.addEventListener('scroll', function () {
+      const section = document.querySelector('.animate-fade');
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight - 100) {
+        section.style.opacity = 1;
+        section.style.animationPlayState = 'running';
+      }
+    });
+  </script>
+  
+  
+</body>
+</html>
